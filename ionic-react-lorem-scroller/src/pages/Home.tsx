@@ -29,7 +29,7 @@ function Example() {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Inbox</IonTitle>
+          <IonTitle>Ionic React Inbox</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>

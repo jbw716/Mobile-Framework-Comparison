@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { RefresherCustomEvent } from '@ionic/angular';
-import { LoremService } from '../services/lorem.service';
 
 @Component({
   selector: 'app-home',
@@ -8,24 +6,15 @@ import { LoremService } from '../services/lorem.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  public lorem: string[] = [];
-
-  constructor(public loremService: LoremService) {
-    this.loadMore();
+  public items: string[] = [];
+  constructor() {
+    this.loadData();
   }
 
-  async loadMore(ev?: any) {
-    this.lorem.push(...await this.loremService.getLorem());
-    if (ev) {
-      ev.target.complete();
-    }
-  }
-
-  async refresh(ev?: any) {
-    this.lorem = [];
-    this.loadMore();
-    if (ev) {
-      ev.target.complete();
-    }
+  async loadData(ev?: any) {
+    let resp = await fetch('https://5fee-172-59-104-137.ngrok-free.app/lorem/10');
+    let newItems = await resp.json();
+    this.items = [...this.items, ...newItems];
+    ev?.target.complete();
   }
 }

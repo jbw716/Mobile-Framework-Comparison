@@ -1,0 +1,7 @@
+{
+  "name": "lorem-scroller",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

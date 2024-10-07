@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+
+<div style="height: 100vh; display: flex; flex-direction: column;">
+    <div class="title-bar">Inbox</div>
+    <main style="flex: 0 0 93%; overflow: auto; height: 100%;">
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+    @* <nav style="flex: 0 0 7%;" class="d-flex bg-dark text-white text-centerd-flex">
+        <div class="nav-item">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span>
+                <div>Home</div>
+            </NavLink>
+        </div>
+        <div class="nav-item">
+            <NavLink class="nav-link" href="counter">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>
+                <div>Counter</div>
+            </NavLink>
+        </div>
+        <div class="nav-item">
+            <NavLink class="nav-link" href="weather">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span>
+                <div>Weather</div>
+            </NavLink>
+        </div>
+    </nav> *@
+</div>

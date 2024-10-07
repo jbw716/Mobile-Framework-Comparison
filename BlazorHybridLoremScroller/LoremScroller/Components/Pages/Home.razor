@@ -1,0 +1,31 @@
+﻿@page "/"
+@using Sve.Blazor.InfiniteScroll.Components
+<InfiniteScroll ObserverTargetId="observerTarget" ObservableTargetReached="(e) => FetchData()">
+    <ul>
+        @foreach (var item in items)
+        {
+            <li class="list-group-item">@item
+            </li>
+        }
+
+        @*The target element that we observe. Once this is reached the callback will be triggered.*@
+        <li class="list-group-item" id="observerTarget"></li>
+    </ul>
+</InfiniteScroll>
+
+@code {
+    private List<string> items = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FetchData(); // Initial data
+    }
+
+    private async Task FetchData()
+    {
+        using var httpClient = new HttpClient { BaseAddress = new Uri("https://5262-172-59-104-137.ngrok-free.app") };
+        var response = await httpClient.GetAsync($"lorem/25");
+        response.EnsureSuccessStatusCode();
+        items.AddRange(await response.Content.ReadFromJsonAsync<string[]>());
+    }
+}
